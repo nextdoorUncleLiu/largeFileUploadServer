@@ -15,4 +15,8 @@ class fileMerge():
         filepwd = os.getcwd() + '/' + foldname + '/'
         # 保存文件到 blob 目录
         file.save(filepwd + file.filename)
-    # def mergeFile(self):
+    def mergeFile(self, foldname = ''):
+        filepwd = os.getcwd() + '/' + foldname + '/'
+        # print(filepwd)
+        for i in os.listdir(filepwd):
+            print(i)

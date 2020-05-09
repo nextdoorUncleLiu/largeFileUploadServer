@@ -15,6 +15,10 @@ app.config['SECRET_KEY'] = '<replace with a secret key>'
 
 toolbar = DebugToolbarExtension(app)
 
+FileMerge = fileMerge()
+
+FileMerge.mergeFile('1589020081327')
+
 @app.route('/blob', methods = ['post'])
 def blob():
     # 连接数据库
@@ -30,14 +34,15 @@ def blob():
         results = collection.find()
         for result in results:
             print(result)
-        fileMerge().addFile(request.files['file'], request.form['foldname'])
+        FileMerge.addFile(request.files['file'], request.form['foldname'])
 
     conectData()
     return {
         'state': 200
     }
-# @app.route('/merge')
-# def index():
-#     return {
-#         'state': 200
-#     }
+@app.route('/merge', methods = ['post'])
+def merge():
+    FileMerge.mergeFile(request.json['foldname'])
+    return {
+        'state': 200
+    }
