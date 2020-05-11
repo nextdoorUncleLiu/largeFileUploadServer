@@ -17,8 +17,6 @@ toolbar = DebugToolbarExtension(app)
 
 FileMerge = fileMerge()
 
-FileMerge.mergeFile('1589020081327')
-
 @app.route('/blob', methods = ['post'])
 def blob():
     # 连接数据库
